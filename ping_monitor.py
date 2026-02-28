@@ -48,7 +48,7 @@ def ping():
         return None
 
     output = result.stdout
-    match = re.search(r"time[=<]\s*([\d.]+)\s*ms", output) 
+    match = re.search(r"time[=<]\s*([\d.]+)\s*ms", output)
 
     if match:
         return float(match.group(1))
@@ -57,36 +57,43 @@ def ping():
 
 clear()
 
-count = 0      # Total Pings made
-total = 0      # Total of ms
-min_ms = None  # Minimum ms value
-max_ms = None  # Maximum ms value
+count = 0
+total = 0
+min_ms = None
+max_ms = None
+
+print(f"{BLUE}┏━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓{RESET}")
 while True:
-    now = datetime.now()
-    now = now.strftime("%H:%M:%S")
+    try:
+        now = datetime.now()
+        now = now.strftime("%H:%M:%S")
 
-    ms = ping()
+        ms = ping()
 
-    if len(str(ms)) == 6:
-        space = ""
-    elif len(str(ms)) == 5:
-        space = " "
-    elif len(str(ms)) == 4:
-        space = "  "
-    elif len(str(ms)) == 3:
-        space = "   "
-    
-    if ms is not None:
-        count += 1
-        total += ms
-        avg = total / count
+        if len(str(ms)) == 6:
+            space = ""
+        elif len(str(ms)) == 5:
+            space = " "
+        elif len(str(ms)) == 4:
+            space = "  "
+        elif len(str(ms)) == 3:
+            space = "   "
 
-        if min_ms is None or ms < min_ms:
-            min_ms = ms
-        if max_ms is None or ms > max_ms:
-            max_ms = ms
+        if ms is not None:
+            count += 1
+            total += ms
+            avg = total / count
 
-        print(f"{BLUE}┃ {CYAN}[{now}]{GREEN} [+] Connected {BLUE}┃{YELLOW}   {ms} ms {BLUE}{space}┃    {MAGENTA}{count}{BLUE}{" "*(7-len(str(count)))}┃  {LILAC}AVG: {avg:7.2f} ms {BLUE}┃  {SAND}MIN: {min_ms:5.2f} ms {BLUE}┃  {BRICK}MAX: {max_ms:8.2f} ms   {BLUE}┃{RESET}")
-    else:
-        print(f"{BLUE}┃ {CYAN}[{now}]{RED} [-]  TIMEOUT {BLUE} ┣━━━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━┫{RESET}")
-    time.sleep(1)
+            if min_ms is None or ms < min_ms:
+                min_ms = ms
+            if max_ms is None or ms > max_ms:
+                max_ms = ms
+
+            print(f"{BLUE}┃ {CYAN}[{now}]{GREEN} [+] Connected {BLUE}┃{YELLOW}   {ms} ms {BLUE}{space}┃    {MAGENTA}{count}{BLUE}{" "*(7-len(str(count)))}┃  {LILAC}AVG: {avg:7.2f} ms {BLUE}┃  {SAND}MIN: {min_ms:5.2f} ms {BLUE}┃  {BRICK}MAX: {max_ms:8.2f} ms   {BLUE}┃{RESET}")
+        else:
+            print(f"{BLUE}┃ {CYAN}[{now}]{RED} [-]  TIMEOUT {BLUE} ┣━━━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━┫{RESET}")
+        time.sleep(1)
+    except(KeyboardInterrupt):
+        print(f"{BLUE}                         ┃             ┃           ┃                  ┃                ┃                     ┃{RESET}")
+        print(f"{BLUE}┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛{RESET}")
+        break
