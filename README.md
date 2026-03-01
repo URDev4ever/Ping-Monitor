@@ -44,8 +44,8 @@ Designed for quick terminal-based diagnostics on Windows, Linux, or WSL.
 * Uses `subprocess.run()` to execute the system `ping` command.
 * Automatically selects:
 
-  * `-n 1 -w 2000` on Windows
-  * `-c 1 -W 2` on Linux
+  * `-n 1 -w 10000` on Windows
+  * `-c 1 -W 10` on Linux
 * Extracts latency using regex:
 
   ```
@@ -68,7 +68,7 @@ No external dependencies required.
 
 ## 🚀 Usage
 
-Clone ( `git clone https://github.com/URDev4ever/Ping-Monitor.git`or download the script, then:
+Clone (`git clone https://github.com/URDev4ever/Ping-Monitor.git`) or download the script, then:
 
 ```bash
 python ping_monitor.py
@@ -87,7 +87,7 @@ CTRL + C
 If you want to change the target:
 
 ```python
-command = ["ping", "-c", "1", "-W", "2", "8.8.8.8"]
+command = ["ping", "-c", "1", "-W", "10", "8.8.8.8"]
 ```
 
 Replace `8.8.8.8` with:
