@@ -34,9 +34,9 @@ def clear():
 
 def ping():
     if os.name == "nt":
-        command = ["ping", "-n", "1", "-w", "2000", "8.8.8.8"]
+        command = ["ping", "-n", "1", "-w", "10000", "8.8.8.8"]
     else:
-        command = ["ping", "-c", "1", "-W", "2", "8.8.8.8"]
+        command = ["ping", "-c", "1", "-W", "10", "8.8.8.8"]
 
     result = subprocess.run(
         command,
@@ -89,11 +89,11 @@ while True:
             if max_ms is None or ms > max_ms:
                 max_ms = ms
 
-            print(f"{BLUE}┃ {CYAN}[{now}]{GREEN} [+] Connected {BLUE}┃{YELLOW}   {ms} ms {BLUE}{space}┃    {MAGENTA}{count}{BLUE}{" "*(7-len(str(count)))}┃  {LILAC}AVG: {avg:7.2f} ms {BLUE}┃  {SAND}MIN: {min_ms:5.2f} ms {BLUE}┃  {BRICK}MAX: {max_ms:8.2f} ms   {BLUE}┃{RESET}")
+            print(f"{BLUE}┃ {CYAN}[{now}]{GREEN} [+] Connected {BLUE}┃{YELLOW}   {ms} ms {BLUE}{space}┃{MAGENTA}{count: ^11}{BLUE}┃  {LILAC}AVG: {avg:7.2f} ms {BLUE}┃  {SAND}MIN: {min_ms:5.2f} ms {BLUE}┃  {BRICK}MAX: {max_ms:8.2f} ms   {BLUE}┃{RESET}")
         else:
             print(f"{BLUE}┃ {CYAN}[{now}]{RED} [-]  TIMEOUT {BLUE} ┣━━━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━┫{RESET}")
         time.sleep(1)
     except(KeyboardInterrupt):
-        print(f"{BLUE}                         ┃             ┃           ┃                  ┃                ┃                     ┃{RESET}")
         print(f"{BLUE}┗━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━┛{RESET}")
         break
+
