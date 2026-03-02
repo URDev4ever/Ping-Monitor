@@ -1,5 +1,8 @@
 <h1 align="center">📡 Ping Monitor CLI</h1>
-
+<p align="center">
+  🇺🇸 <a href="README.md"><b>English</b></a> |
+  🇪🇸 <a href="README_ES.md">Español</a>
+</p>
 <h3 align="center">Simple real-time network connectivity monitor written in Python.</h3>
 
 Sends one ping per second to `8.8.8.8` and displays:
@@ -74,6 +77,7 @@ Clone (`git clone https://github.com/URDev4ever/Ping-Monitor.git`) or download t
 python ping_monitor.py
 ```
 >or `cd Ping-Monitor` first if cloned
+
 Stop with:
 
 ```
