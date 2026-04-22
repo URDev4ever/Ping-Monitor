@@ -1,7 +1,7 @@
 <h1 align="center">📡 Ping Monitor CLI</h1>
 <p align="center">
   🇺🇸 <a href="README.md"><b>English</b></a> |
-  🇪🇸 <a href="README_ES.md">Español</a>
+  🇪🇸 <b>Español</b>
 </p>
 <h3 align="center">Monitor simple de conectividad de red en tiempo real escrito en Python.</h3>
 
