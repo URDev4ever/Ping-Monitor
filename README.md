@@ -1,6 +1,6 @@
 <h1 align="center">📡 Ping Monitor CLI</h1>
 <p align="center">
-  🇺🇸 <a href="README.md"><b>English</b></a> |
+  🇺🇸 <b>English</b> |
   🇪🇸 <a href="README_ES.md">Español</a>
 </p>
 <h3 align="center">Simple real-time network connectivity monitor written in Python.</h3>
